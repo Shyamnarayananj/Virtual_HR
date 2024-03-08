@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<h5 style="color:#FF6600">{{msg}}</h5>
+
+{% if res=="1" %}
+<script>
+alert("Face Turned, You are Rejected");
+//Using setTimeout to execute a function after 5 seconds.
+setTimeout(function () {
+   //Redirect with JavaScript
+   window.location.href= '/userhome?act=no&pid={{pid}}&vid={{vid}}';
+}, 5000);
+</script>
+{% else %}
+<script>
+//Using setTimeout to execute a function after 5 seconds.
+setTimeout(function () {
+   //Redirect with JavaScript
+   window.location.href= '/testface&pid={{pid}}&vid={{vid}}';
+}, 5000);
+</script>
+
+{% endif %}
+</body>
+</html>
