@@ -1,0 +1,444 @@
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Virtual HR</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+		============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="../static/img/favicon.ico">
+    <!-- Google Fonts
+		============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+    <!-- owl.carousel CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/owl.carousel.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.css">
+    <link rel="stylesheet" href="../static/css/owl.transitions.css">
+    <!-- animate CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/animate.css">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <!-- meanmenu icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/meanmenu.min.css">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/main.css">
+    <!-- educate icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/educate-custon-icon.css">
+    <!-- morrisjs CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/morrisjs/morris.css">
+    <!-- mCustomScrollbar CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <!-- metisMenu CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="../static/css/metisMenu/metisMenu-vertical.css">
+    <!-- calendar CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="../static/css/calendar/fullcalendar.print.min.css">
+    <!-- forms CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/form/all-type-forms.css">
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/style.css">
+    <!-- responsive CSS
+		============================================ -->
+    <link rel="stylesheet" href="../static/css/responsive.css">
+    <!-- modernizr JS
+		============================================ -->
+    <script src="../static/js/vendor/modernizr-2.8.3.min.js"></script>
+	
+	<style>
+.txtarea {
+resize: none;
+outline:none;
+width:100%;
+height:500px;
+border: 3px solid #cccccc;
+padding: 5px;
+font-family:Arial, Helvetica, sans-serif;
+background-position:bottom right;
+background-repeat:no-repeat;
+font-size:14px;
+color:#000000;
+
+}
+</style>
+<script>
+	function show()
+	{
+	document.getElementById("x1").style.display="block";
+	document.getElementById("x2").style.display="none";
+	}
+	/////////////
+	
+		var result = document.getElementById('result');
+  
+		function startConverting () {
+		
+		document.getElementById("x1").style.display="none";
+	document.getElementById("x2").style.display="block";
+
+		if('webkitSpeechRecognition' in window) {
+			var speechRecognizer = new webkitSpeechRecognition();
+			speechRecognizer.continuous = true;
+			speechRecognizer.interimResults = true;
+			speechRecognizer.lang = 'en-US';
+			speechRecognizer.start();
+
+			var finalTranscripts = '';
+
+			speechRecognizer.onresult = function(event) {
+				var interimTranscripts = '';
+				for(var i = event.resultIndex; i < event.results.length; i++){
+					var transcript = event.results[i][0].transcript;
+					transcript.replace("\n", "<br>");
+					if(event.results[i].isFinal) {
+						finalTranscripts += transcript;
+						document.form1.res.value=finalTranscripts;
+					}else{
+						interimTranscripts += transcript;
+					}
+				}
+				result.innerHTML = finalTranscripts + '<span style="color: #999">' + interimTranscripts + '</span>';
+			};
+			speechRecognizer.onerror = function (event) {
+
+			};
+			
+			getPost();
+			
+		}else {
+			result.innerHTML = 'Your browser is not supported. Please download Google chrome or Update your Google chrome!!';
+		}	
+		}
+	
+	</script>
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+    <!-- Start Left menu area -->
+    <div class="left-sidebar-pro">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <a href=""><img class="main-logo" src="../static/img/logo/logo.png" alt="" /></a>
+                <strong><a href=""><img src="../static/img/logo/logosn.png" alt="" /></a></strong>
+            </div>
+            <div class="left-custom-menu-adp-wrap comment-scrollbar">
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                    <ul class="metismenu" id="menu1">
+                         <li><a href="/userhome">
+								   <span class="educate-icon educate-home icon-wrap"></span>
+								   <span class="mini-click-non">Dashboard</span></a></li>
+					
+                        
+                        <li>
+					  <li>
+                            <a class="has-arrow" href="/add_resume" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Resume</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="All Students" href="/add_resume"><span class="mini-sub-pro">Add Resume</span></a></li>
+                               
+                            </ul>
+                      </li>
+						
+						<li>
+                            <a class="has-arrow" href="/candidate_vacancy" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Interview</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+								<li><a title="All Courses" href="/candidate_vacancy"><span class="mini-sub-pro">Vacancies</span></a></li>
+                                <li><a title="All Courses" href="/candidate_interview"><span class="mini-sub-pro">Interview Details</span></a></li>
+                            </ul>
+                        </li>
+						
+						<li class="active">
+                            <a  href="/job_details"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Job Details</span></a>                        </li>
+						
+						<li id="removable">
+                            <a href="/logout"><span class="educate-icon educate-pages icon-wrap"></span> <span class="mini-click-non">Logout</span></a>                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
+    <!-- End Left menu area -->
+    <!-- Start Welcome area -->
+    <div class="all-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="logo-pro">
+                        <a href=""><img class="main-logo" src="../static/img/logo/logo.png" alt="" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-advance-area">
+            <div class="header-top-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="header-top-wraper">
+                                <div class="row">
+                                    <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                        <div class="menu-switcher-pro">
+                                            <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+													<i class="educate-icon educate-nav"></i>
+												</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                        <div class="header-top-menu tabl-d-n">
+                                            <ul class="nav navbar-nav mai-top-nav">
+                                                <li class="nav-item"><a href="/userhome" class="nav-link">Home</a>
+                                                </li>
+                                                <li class="nav-item"><a href="/candidate_vacancy" class="nav-link">Vacancies</a>
+                                                </li>
+                                                <li class="nav-item"><a href="/candidate_interview" class="nav-link">Interview</a>
+                                                </li>
+                                               
+                                                <li class="nav-item"><a href="/job_details" class="nav-link">Job Details</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                        <div class="header-right-info">
+                                            <ul class="nav navbar-nav mai-top-nav header-right-menu">
+                                               
+                                                
+                                                <li class="nav-item">
+                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+															<img src="../static/img/pro2.jpg" alt="" />
+															<span class="admin-name">{{data[1]}}</span>
+															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
+														</a>
+                                                    <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                        <!--<li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a>
+                                                        </li>-->
+                                                        <!--<li><a href="/profile"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
+                                                        </li>-->
+                                                       <!-- <li><a href="#"><span class="edu-icon edu-money author-log-ic"></span>User Billing</a>
+                                                        </li>
+                                                        <li><a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
+                                                        </li>-->
+                                                        <li><a href="/logout"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu start -->
+            <div class="mobile-menu-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul class="mobile-menu-nav">
+                                        <li><a data-target="#Charts" href="/userhome">Home <span class="admin-project-icon edu-icon"></span></a>
+                                            
+                                        </li>
+										
+									
+                                       
+                                        <li><a data-toggle="collapse" data-target="#demoevent" href="/add_resume">Resume <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                            <ul id="demoevent" class="collapse dropdown-header-top">
+                                                <li><a href="/add_resume">Add Resume</a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </li>
+                                        <li><a data-toggle="collapse" data-target="#demopro" href="/candidate_vacancy">Interview <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                            <ul id="demopro" class="collapse dropdown-header-top">
+                                                <li><a href="/candidate_vacancy">Vacancies</a>
+                                                </li>
+                                                <li><a href="/candidate_interview">Interview Details</a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </li>
+                                        <li><a  href="/job_details">Job Details <span class="admin-project-icon edu-icon"></span></a>
+                                           
+                                        </li>
+                                        <li><a data-toggle="collapse" data-target="#demolibra" href="/logout">Logout <span class="admin-project-icon edu-icon"></span></a>
+                                            
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu end -->
+            <div class="breadcome-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="breadcome-list single-page-breadcome">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="breadcome-heading">
+                                            <h3>Virtual HR - Interview</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <ul class="breadcome-menu">
+                                            <li><a href="/userhome">Home</a> <span class="bread-slash"></span>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single pro tab review Start-->
+        <div class="single-pro-review-area mt-t-30 mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="profile-info-inner">
+						<form name="form2" method="post">
+                        {{question}}
+						 <img src="../static/img/vhr1.jpg">
+						  </form>
+						  
+						  
+						  
+						  <script>
+//Using setTimeout to execute a function after 5 seconds.
+setTimeout(function () {
+   //Redirect with JavaScript
+   window.location.href= '/test_cam?act={{act}}';
+}, 10000);
+</script>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
+                           
+                            <div id="myTabContent" class="tab-content custom-product-edit">
+                               
+						<form name="form1" method="post">
+						
+						<textarea name="res" id="res" class="form-control"></textarea>
+						 <div id="result"></div>
+							
+							<div id="x1">
+						 <a href="javascript:startConverting();"><i class="fa fa-microphone btn btn-danger" aria-hidden="true"></i></a>
+						 	</div>
+							
+							<div id="x2" style="display:none">
+						<a href="javascript:show();"> <img src="../static/img/mic-animate.gif"></a>
+						<h3 style="color:#FF6600"></h3>
+						 	</div>
+						
+						  </form>
+                               
+							   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-copy-right">
+                            <p>Virtual HR <a href="https://colorlib.com/wp/templates/"></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery
+		============================================ -->
+    <script src="../static/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- bootstrap JS
+		============================================ -->
+    <script src="../static/js/bootstrap.min.js"></script>
+    <!-- wow JS
+		============================================ -->
+    <script src="../static/js/wow.min.js"></script>
+    <!-- price-slider JS
+		============================================ -->
+    <script src="../static/js/jquery-price-slider.js"></script>
+    <!-- meanmenu JS
+		============================================ -->
+    <script src="../static/js/jquery.meanmenu.js"></script>
+    <!-- owl.carousel JS
+		============================================ -->
+    <script src="../static/js/owl.carousel.min.js"></script>
+    <!-- sticky JS
+		============================================ -->
+    <script src="../static/js/jquery.sticky.js"></script>
+    <!-- scrollUp JS
+		============================================ -->
+    <script src="../static/js/jquery.scrollUp.min.js"></script>
+    <!-- mCustomScrollbar JS
+		============================================ -->
+    <script src="../static/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../static/js/scrollbar/mCustomScrollbar-active.js"></script>
+    <!-- metisMenu JS
+		============================================ -->
+    <script src="../static/js/metisMenu/metisMenu.min.js"></script>
+    <script src="../static/js/metisMenu/metisMenu-active.js"></script>
+    <!-- morrisjs JS
+		============================================ -->
+    <script src="../static/js/sparkline/jquery.sparkline.min.js"></script>
+    <script src="../static/js/sparkline/jquery.charts-sparkline.js"></script>
+    <!-- calendar JS
+		============================================ -->
+    <script src="../static/js/calendar/moment.min.js"></script>
+    <script src="../static/js/calendar/fullcalendar.min.js"></script>
+    <script src="../static/js/calendar/fullcalendar-active.js"></script>
+    <!-- tab JS
+		============================================ -->
+    <script src="../static/js/tab.js"></script>
+    <!-- plugins JS
+		============================================ -->
+    <script src="../static/js/plugins.js"></script>
+    <!-- main JS
+		============================================ -->
+    <script src="../static/js/main.js"></script>
+    <!-- tawk chat JS
+		============================================ -->
+    <!--<script src="../static/js/tawk-chat.js"></script>-->
+</body>
+
+</html>
