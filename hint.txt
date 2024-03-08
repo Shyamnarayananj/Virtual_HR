@@ -1,0 +1,2 @@
+virtual folder save to wamp/www/
+PHP curl acttivate
